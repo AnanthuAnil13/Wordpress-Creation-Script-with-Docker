@@ -27,7 +27,7 @@ chmod +x docword-sct.sh
 
 ## Usage
 
-* ### Create New Wordpress Site
+1. ### Create New Wordpress Site
 To create a new WordPress site, run the script with the site name as the first argument:
 ```
 sudo bash docword-sct.sh example.com
@@ -35,7 +35,7 @@ sudo bash docword-sct.sh example.com
 This will create a new WordPress site with the name example.com. The script will also create an entry in the /etc/hosts file pointing to localhost so that you can access the site using the domain name example.com.
 After the site is created, the script will prompt you to open it in a browser.
 
-* ### Enable/Disable Site
+2. ### Enable/Disable Site
 To enable or disable the site, use the enable or disable subcommand:
 ```
 sudo bash docword-sct.sh example.com enable
@@ -44,13 +44,13 @@ sudo bash docword-sct.sh example.com enable
 sudo bash docword-sct.sh example.com disable
 ```
 
-* ### Delete Site
+3. ### Delete Site
 To delete the site, use the delete subcommand:
 ```
 sudo bash docword-sct.sh example.com delete
 ```
 
-* ### Troubleshooting
+4. ### Troubleshooting
 If you encounter any issues while using the script, check the logs for the containers using the following command:
 ```
 docker-compose logs
