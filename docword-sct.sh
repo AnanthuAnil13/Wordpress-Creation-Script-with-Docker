@@ -107,14 +107,17 @@ if [ -z "$2" ]; then
 	echo "The WordPress site is up and running!"
 
 	# Open the url in the deault browser
-	#read -p "Do you want to open $site_name in your browser? (y/n)" input
-	#if [ "$input" = "y" ] || [ "$input" = "Y" ]; then
-	#  echo "Proceeding..."
-	#  url="http://${sitename}"
-	#  firefox $url
-	#else
-	#  echo "Thank You for using docword-sct!"
-	#fi
+	read -p "Do you want to open $site_name in your browser? (y/n)" input
+	if [ "$input" = "y" ] || [ "$input" = "Y" ]; then
+		echo "Proceeding..."
+		url="http://${site_name}"
+		echo $url
+		# Opening firefox with the site
+		sudo xhost +
+		sudo firefox $url
+	else
+		echo "Thank You for using docword-sct!"
+	fi
 # Check if user wants to enable/disable/delete the site
 elif [ "$2" = "enable" ]; then
   docker-compose start
