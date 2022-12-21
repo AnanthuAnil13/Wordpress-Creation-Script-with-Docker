@@ -4,6 +4,7 @@ The script is designed to create a WordPress site using Docker. It does this by 
 ## Prerequisites
 
 **Docker:** You need to have Docker installed on your system. If you don't have it installed, the script will install it for you.
+
 **Docker Compose:** You also need to have Docker Compose installed on your system. If you don't have it installed, the script will install it for you.
 
 ## Installation
