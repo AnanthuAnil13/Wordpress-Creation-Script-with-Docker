@@ -1,68 +1,186 @@
+---
+title: "Wordpress-Creation-Script-with-Docker"
+shortDescription: "A Bash automation script that spins up a full WordPress site using the LEMP stack (Linux, Nginx, MySQL, PHP) via Docker Compose — with support for creating, enabling, disabling, and deleting sites."
+repoURL: "https://github.com/AnanthuAnil13/Wordpress-Creation-Script-with-Docker"
+liveURL: ""
+imageURL: ""
+technologies:
+  - Bash / Shell Script
+  - Docker
+  - Docker Compose
+  - Nginx
+  - MySQL
+  - PHP
+  - WordPress
+category: "DevOps / Automation"
+featured: true
+order: 4
+status: "Completed"
+year: 2022
+platform: "Linux (Debian-based)"
+visibility: "public"
+---
+
 # Wordpress-Creation-Script-with-Docker
-The script is designed to create a WordPress site using Docker. It does this by using the LEMP stack (Linux, Nginx, MySQL, PHP) and creating all the necessary containers using Docker Compose.
 
-## Prerequisites
+> Automate WordPress site creation with a single Bash command — powered by Docker and the LEMP stack.
 
-**Docker:** You need to have Docker installed on your system. If you don't have it installed, the script will install it for you.
+---
 
-**Docker Compose:** You also need to have Docker Compose installed on your system. If you don't have it installed, the script will install it for you.
+## 📌 Short Description
 
-## Installation
+This project provides a single Bash script (`docword-sct.sh`) that fully automates the provisioning of a WordPress site using Docker Compose. It sets up the complete **LEMP stack** (Linux, Nginx, MySQL, PHP) in containers, updates `/etc/hosts` for local domain resolution, and exposes commands to **create**, **enable**, **disable**, and **delete** WordPress sites — all from the command line.
 
-To install the script, follow these steps:
+---
 
-1. Download the script
+## 🔗 Links
+
+| Resource   | URL |
+|------------|-----|
+| Repository | https://github.com/AnanthuAnil13/Wordpress-Creation-Script-with-Docker |
+
+---
+
+## 🛠️ Technologies Used
+
+| Technology      | Role                                  |
+|-----------------|---------------------------------------|
+| Bash            | Automation scripting                  |
+| Docker          | Container runtime                     |
+| Docker Compose  | Multi-container orchestration         |
+| Nginx           | Web server / reverse proxy            |
+| MySQL           | Database server                       |
+| PHP             | WordPress runtime                     |
+| WordPress       | CMS being deployed                    |
+
+---
+
+## 📁 Project Structure
+
 ```
+Wordpress-Creation-Script-with-Docker/
+├── docword-sct.sh      # Main automation script
+├── README.md           # Documentation
+└── LICENSE             # License file
+```
+
+---
+
+## ⚙️ Features
+
+- **Auto-installs Docker & Docker Compose** if not already present on the system
+- **Creates a WordPress site** with a custom domain name in one command
+- **Adds a `/etc/hosts` entry** so the site is accessible via the given domain locally
+- **Prompts to open the site** in a browser automatically after creation
+- **Enable / Disable** sites (start/stop containers without deleting data)
+- **Delete sites** and clean up all associated Docker containers and volumes
+- **Debug-friendly** — view container logs with `docker-compose logs`
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- A **Debian-based Linux** system (Ubuntu, Debian, etc.)
+- `sudo` / root access
+- Internet connection (for Docker installation if needed)
+
+> Docker and Docker Compose will be installed automatically by the script if missing.
+
+### Installation
+
+```bash
+# 1. Clone the repository
 git clone https://github.com/AnanthuAnil13/Wordpress-Creation-Script-with-Docker.git
-```
 
-2. Navigate into the downloaded folder
-```
+# 2. Navigate into the directory
 cd Wordpress-Creation-Script-with-Docker
-```
 
-3. Make the script executable
-```
+# 3. Make the script executable
 chmod +x docword-sct.sh
 ```
 
-## Usage
+---
 
-### Create New Wordpress Site
-To create a new WordPress site, run the script with the site name as the first argument:
-```
+## 📖 Usage
+
+### Create a New WordPress Site
+
+```bash
 sudo bash docword-sct.sh example.com
 ```
-This will create a new WordPress site with the name example.com. The script will also create an entry in the /etc/hosts file pointing to localhost so that you can access the site using the domain name example.com.
-After the site is created, the script will prompt you to open it in a browser.
 
-### Enable/Disable Site
-To enable or disable the site, use the enable or disable subcommand:
-```
+This will:
+- Create all necessary Docker containers (Nginx, MySQL, PHP, WordPress)
+- Add `example.com` to `/etc/hosts` pointing to `127.0.0.1`
+- Prompt you to open the site in a browser
+
+### Enable a Site
+
+```bash
 sudo bash docword-sct.sh example.com enable
 ```
-```
+
+Starts the containers for the site (if previously stopped).
+
+### Disable a Site
+
+```bash
 sudo bash docword-sct.sh example.com disable
 ```
 
-### Delete Site
-To delete the site, use the delete subcommand:
-```
+Stops the containers without removing data.
+
+### Delete a Site
+
+```bash
 sudo bash docword-sct.sh example.com delete
 ```
 
-### Troubleshooting
-If you encounter any issues while using the script, check the logs for the containers using the following command:
-```
+Removes all containers and associated volumes for the site.
+
+---
+
+## 🐛 Troubleshooting
+
+**View logs for all containers:**
+```bash
 docker-compose logs
 ```
-This will show you the logs for all the containers. You can also specify the name of a specific container to view its logs, e.g. docker-compose logs db to view the logs for the MySQL container.
 
-## Notes
+**View logs for a specific container (e.g., MySQL):**
+```bash
+docker-compose logs db
+```
 
-* This script was tested on a Debian-based distro. You may need to adjust the commands and paths accordingly depending on your system.
-* The script installs Docker and Docker Compose if they are not already installed on your system.
-* The script waits for 20 seconds for the site to be up and healthy before checking the status. You may need to adjust this value depending on your system and network conditions.
+**Check if containers are running:**
+```bash
+docker ps
+```
 
-## License
-This script is released under the [MIT License](https://github.com/AnanthuAnil13/Wordpress-Creation-Script-with-Docker/blob/main/LICENSE).
+---
+
+## 📋 Metadata
+
+| Field      | Value |
+|------------|-------|
+| Category   | DevOps / Automation |
+| Platform   | Linux (Debian-based) |
+| Status     | Completed |
+| Year       | 2022 |
+| Featured   | Yes |
+| Visibility | Public |
+
+---
+
+## 📄 License
+
+This project is licensed — see the [LICENSE](https://github.com/AnanthuAnil13/Wordpress-Creation-Script-with-Docker/blob/main/LICENSE) file for details.
+
+---
+
+## 👤 Author
+
+**AnanthuAnil13**
+GitHub: [@AnanthuAnil13](https://github.com/AnanthuAnil13)
